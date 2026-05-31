@@ -60,29 +60,39 @@ keyring is still on every device that had it).
 ```sh
 git clone https://github.com/danass/pgp-sync
 cd pgp-sync
+cp .env.example .env
+$EDITOR .env                              # set DOMAIN, PORT, paths
 ./scripts/build-linux.sh                  # cross-compiles a static binary
 scp -r . your-server:/tmp/pgp-sync-staging/
 ssh your-server '
   cd /tmp/pgp-sync-staging
-  BIN_SRC=$PWD/bin/pgp-sync-linux-amd64 sudo -E ./scripts/install.sh
+  sudo ./scripts/install.sh
 '
 ```
 
-The installer creates a `pgpsync` system user, lays down `/opt/pgp-sync`,
-`/etc/pgp-sync`, `/var/lib/pgp-sync`, installs a `systemd` unit, and starts
-the service on `:8443`.
+What `.env` controls (defaults in parens):
+
+- `DOMAIN` (`sync.example.com`) — the hostname your TLS cert is for.
+- `PORT` (`8443`) — listening port; unprivileged user so > 1024.
+- `DATA_DIR` (`/var/lib/pgp-sync`) — where SQLite lives.
+- `CERT_DIR` (`/etc/pgp-sync/certs`) — where acme.sh deposits the cert.
+- `SERVICE_USER` (`pgpsync`) — Unix user the service runs as.
+
+The installer creates the service user, lays down `/opt/pgp-sync`,
+`/etc/pgp-sync`, the data dir, renders a `systemd` unit from those values,
+generates `/etc/pgp-sync/env` for the binary, and starts the service.
 
 Then wire up TLS via the included acme.sh deploy hook (assumes acme.sh is
 already managing your cert):
 
 ```sh
 ~/.acme.sh/acme.sh --deploy \
-  -d your-server.example.com \
+  -d "$DOMAIN" \
   --deploy-hook /tmp/pgp-sync-staging/deploy/acme-deploy-hook.sh
 ```
 
-That copies the live cert into `/etc/pgp-sync/certs/` and bounces the
-service. Renewals trigger the hook automatically.
+That copies the live cert into `$CERT_DIR` and bounces the service.
+Renewals trigger the hook automatically.
 
 ### Docker
 

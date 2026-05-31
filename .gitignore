@@ -7,3 +7,6 @@
 .DS_Store
 .idea/
 .vscode/
+
+# Deploy-time config — copy .env.example to .env and edit. Never committed.
+.env
