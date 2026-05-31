@@ -1,0 +1,16 @@
+# Add this stanza to your /etc/tor/torrc to expose pgp-sync as an .onion
+# hidden service. No inbound port forwarding on your router needed.
+#
+# After reloading tor (`sudo systemctl reload tor`), read the generated
+# hostname:
+#
+#     sudo cat /var/lib/tor/pgp-sync/hostname
+#
+# That's the v3 .onion address your clients will use:
+#
+#     https://<long-onion>.onion         (Tor Browser, no TLS needed —
+#                                          .onion gives you authenticated
+#                                          encryption already)
+
+HiddenServiceDir   /var/lib/tor/pgp-sync/
+HiddenServicePort  80 127.0.0.1:8443

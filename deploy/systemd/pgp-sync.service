@@ -1,0 +1,27 @@
+[Unit]
+Description=pgp-sync — end-to-end encrypted PGP keyring sync server
+After=network.target
+
+[Service]
+Type=simple
+User=pgpsync
+Group=pgpsync
+EnvironmentFile=/etc/pgp-sync/env
+ExecStart=/opt/pgp-sync/pgp-sync
+Restart=on-failure
+RestartSec=2
+
+# Hardening — matches the pattern used by imgserve / playwright-fetch on baal.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/pgp-sync
+ReadOnlyPaths=/etc/pgp-sync /opt/pgp-sync
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
