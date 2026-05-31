@@ -4,7 +4,7 @@
 The server stores opaque ciphertext blobs keyed by a user's PGP fingerprint
 and never sees plaintext.
 
-The reference client is the [PGP for Firefox](https://github.com/danass/pgpforfirefox)
+The reference client is the [PGP for Firefox](https://addons.mozilla.org/en-GB/firefox/addon/pgp-for-firefox/)
 addon — including the MV2 build for Tor Browser — but the protocol is
 language- and client-agnostic. Anyone can implement a server or a client
 against this spec.

@@ -6,10 +6,10 @@ You run an instance. Your clients (or your friends') talk to it over HTTPS or
 a Tor `.onion`. The server holds only ciphertext — it can't read your keys,
 sign as you, or grant access to anyone who doesn't hold your PGP private key.
 
-The reference client is **[PGP for Firefox](https://github.com/danass/pgpforfirefox)**
-— a local-first PGP toolkit (keyring, notepad, page-scanner) for Firefox and
-Tor Browser. The addon talks to a pgp-sync server of your choice; you keep
-custody of both the keys and the storage.
+The reference client is **[PGP for Firefox](https://addons.mozilla.org/en-GB/firefox/addon/pgp-for-firefox/)**
+on Mozilla Add-ons — a local-first PGP toolkit (keyring, notepad,
+page-scanner) for Firefox and Tor Browser. The addon talks to a pgp-sync
+server of your choice; you keep custody of both the keys and the storage.
 
 ## Design in one screen
 
@@ -110,8 +110,8 @@ will then expose.
 
 ## Configure the addon to use your server
 
-1. Open `about:debugging#/runtime/this-firefox` → load the PGP for Firefox
-   addon (or install from AMO).
+1. Install the [PGP for Firefox addon from AMO](https://addons.mozilla.org/en-GB/firefox/addon/pgp-for-firefox/),
+   or load it manually via `about:debugging#/runtime/this-firefox`.
 2. In the addon → **Keyring** → **Sync** section.
 3. Enter your server's base URL — e.g. `https://baal.danpm.com:8443` or
    `http://abcdef…onion`.
@@ -172,5 +172,5 @@ Run with plain HTTP for local testing — leave `-cert` and `-key` empty.
 
 MIT for the server. See [LICENSE](LICENSE).
 
-The reference client ([PGP for Firefox](https://github.com/danass/pgpforfirefox))
+The reference client ([PGP for Firefox](https://addons.mozilla.org/en-GB/firefox/addon/pgp-for-firefox/))
 has its own license. Bundled OpenPGP.js in the client is LGPL-3.0.
