@@ -47,10 +47,11 @@ solutions force you to either:
 - Manage rsync / Syncthing / USB sticks yourself — works, but no version
   semantics and easy to silently overwrite.
 
-pgp-sync is a 400-line Go server that does *only* the boring blob-storage
-half well. Encryption stays on the client. Your private key never touches
-the server. The server is throwaway — wipe it and you lose nothing that
-matters (your keyring is still on every device that had it).
+pgp-sync is a ~400-line Go server that handles only the boring half of the
+problem — opaque blob storage with versioning — and does it carefully. All
+encryption stays on the client. Your private key never touches the server.
+The server is throwaway: wipe it and you lose nothing that matters (your
+keyring is still on every device that had it).
 
 ## Run your own
 
