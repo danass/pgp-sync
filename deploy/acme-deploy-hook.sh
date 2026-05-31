@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # acme.sh deploy hook for pgp-sync.
 # Install with:
-#   acme.sh --deploy -d baal.danpm.com --deploy-hook ./deploy/acme-deploy-hook.sh
+#   acme.sh --deploy -d sync.example.com --deploy-hook ./deploy/acme-deploy-hook.sh
 #
 # acme.sh calls this script with the following positional args after a
 # successful issue/renew:

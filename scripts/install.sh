@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# One-shot installer for pgp-sync on a Debian/Ubuntu box (tested on baal:
-# Debian 13, systemd 257). Idempotent — safe to re-run after upgrades.
+# One-shot installer for pgp-sync on a Debian/Ubuntu box (tested on
+# Debian 13 / systemd 257). Idempotent — safe to re-run after upgrades.
 #
 # Run from inside this repo on the target host:
 #   sudo ./scripts/install.sh
@@ -59,4 +59,4 @@ echo "    status: systemctl status pgp-sync"
 echo "    logs:   journalctl -u pgp-sync -f"
 echo
 echo "Next: wire up TLS via acme.sh:"
-echo "    acme.sh --deploy -d baal.danpm.com --deploy-hook $REPO_ROOT/deploy/acme-deploy-hook.sh"
+echo "    acme.sh --deploy -d <your.domain> --deploy-hook $REPO_ROOT/deploy/acme-deploy-hook.sh"

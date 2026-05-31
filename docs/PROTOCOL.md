@@ -28,8 +28,8 @@ key.
 
 ## Endpoints
 
-Base URL: any HTTPS origin you control. The reference deployment lives at
-`https://baal.danpm.com:8443`.
+Base URL: any HTTPS origin you control (e.g. `https://sync.example.com:8443`,
+or an `.onion` if you deploy via Tor).
 
 All request and response bodies are JSON. Byte fields (`ciphertext`,
 `signature`) use standard base64 unless noted.

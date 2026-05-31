@@ -114,7 +114,7 @@ will then expose.
 1. Install the [PGP for Firefox addon from AMO](https://addons.mozilla.org/en-GB/firefox/addon/pgp-for-firefox/),
    or load it manually via `about:debugging#/runtime/this-firefox`.
 2. In the addon → **Keyring** → **Sync** section.
-3. Enter your server's base URL — e.g. `https://baal.danpm.com:8443` or
+3. Enter your server's base URL — e.g. `https://sync.example.com:8443` or
    `http://abcdef…onion`.
 4. Pick your primary PGP key (the one you'll authenticate as).
 5. Click **Push** for the first sync. From then on, every keyring change

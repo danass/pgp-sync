@@ -11,7 +11,7 @@ ExecStart=/opt/pgp-sync/pgp-sync
 Restart=on-failure
 RestartSec=2
 
-# Hardening — matches the pattern used by imgserve / playwright-fetch on baal.
+# Hardening — restrict filesystem access, no new privileges, private tmp.
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
